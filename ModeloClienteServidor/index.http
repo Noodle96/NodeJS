@@ -1,0 +1,42 @@
+DELETE http://localhost:3000/api/resource/123
+Content-Type: application/json
+
+{
+    "reason": "No longer needed"
+}
+
+### GET Request
+GET http://localhost:3000/api/resource/123
+Content-Type: application/json
+
+###
+
+### POST Request
+POST http://localhost:3000/api/resource
+Content-Type: application/json
+
+{
+    "name": "New Resource",
+    "description": "This is a new resource"
+}
+
+###
+
+### PUT Request
+PUT http://localhost:3000/api/resource/123
+Content-Type: application/json
+
+{
+    "name": "Updated Resource",
+    "description": "This resource has been updated"
+}
+
+###
+
+### DELETE Request
+DELETE http://localhost:3000/api/resource/123
+Content-Type: application/json
+
+{
+    "reason": "No longer needed"
+}
