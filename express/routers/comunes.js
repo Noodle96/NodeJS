@@ -97,6 +97,18 @@ routerComunes.patch('/:name', (request, response) => {
     return response.status(404).send('No se encontro la carta');
 });
 
+// DELETE => Eliminar una carta
+routerComunes.delete('/:name', (request, response) => {
+    const name = request.params.name;
+    const indice = comunes.findIndex(carta => carta.nombre == name);
+    console.log("indice ==>" , indice); // >=0:found, -1: not found
+    if(indice >= 0){ 
+        comunes.splice(indice, 1);
+        return response.status(200).send(JSON.stringify(comunes));
+    }
+    return response.status(404).send('No se encontro la carta');
+});
+
 
 
 module.exports = {
