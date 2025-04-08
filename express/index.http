@@ -1,0 +1,90 @@
+DELETE http://localhost:3000/api/resource/123
+Content-Type: application/json
+
+{
+    "reason": "No longer needed"
+}
+
+### GET Request
+GET http://localhost:3000/api/resource/123
+Content-Type: application/json
+
+###
+
+### POST Request
+POST http://localhost:3000/api/cartas/comunes
+Content-Type: application/json
+
+{
+    "name": "New Resource",
+    "description": "This is a new resource",
+    "type": 3
+}
+
+###
+
+### POST Request
+POST http://localhost:3000/api/cartas/comunes
+Content-Type: application/json
+
+{
+    "nombre": "arqueras",
+    "tipo": "tierra",
+    "costo": 3,
+    "danhio": 755,
+    "vida": 1800,
+    "velocidad": 12,
+    "alcance": 1
+}
+
+###
+
+### PUT Request
+PUT http://localhost:3000/api/resource/123
+Content-Type: application/json
+
+{
+    "name": "Updated Resource",
+    "description": "This resource has been updated"
+}
+
+###
+
+### PUT Request
+PUT http://localhost:3000/api/cartas/comunes/Esbirros
+Content-Type: application/json
+
+{
+    "nombre": "Esbirros PRO",
+    "tipo": "tierra",
+    "costo": 3,
+    "daño": 50,
+    "vida": 200,
+    "velocidad": 1.5,
+    "alcance": 200
+}
+
+###
+
+
+### PUT Request
+PATCH http://localhost:3000/api/cartas/comunes/Esbirros
+Content-Type: application/json
+
+{
+    "tipo": "Aereo",
+    "costo": 4
+}
+
+###
+
+
+
+
+### DELETE Request
+DELETE http://localhost:3000/api/cartas/comunes/Esbirros
+Content-Type: application/json
+
+{
+    "reason": "No longer needed"
+}
