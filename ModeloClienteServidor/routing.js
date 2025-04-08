@@ -10,7 +10,7 @@ const {infoCartas}  = require('./cartas');
 // console.log(infoCartas);
 
 const servidor = http.createServer((request, response) => {
-    console.log('Recibiendo una solicitud HTTP');
+    console.log('Recibiendo una solicitud HTTP modificado');
     const {method} = request;
     switch(method){
         case 'GET':
