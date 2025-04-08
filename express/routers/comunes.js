@@ -82,7 +82,20 @@ routerComunes.put('/:name', (request, response) => {
     
 });
 
-
+// PATCH => Actualizar una carta
+routerComunes.patch('/:name', (request, response) => {
+    const cartaActualizada = request.body;
+    // console.log("request.params ==>" , request.params);
+    const name = request.params.name;
+    const indice = comunes.findIndex(carta => carta.nombre == name);
+    console.log("indice ==>" , indice); // >=0:found, -1: not found
+    if(indice >= 0){ 
+        const cartaAModificar = comunes[indice];
+        Object.assign(cartaAModificar, cartaActualizada);
+        return response.status(200).send(JSON.stringify(comunes));
+    }
+    return response.status(404).send('No se encontro la carta');
+});
 
 
 
