@@ -66,6 +66,23 @@ routerComunes.post('/', (request, response) => {
     return response.status(200).send(JSON.stringify(comunes));
 });
 
+// PUT => Actualizar una carta
+routerComunes.put('/:name', (request, response) => {
+    const cartaActualizada = request.body;
+    console.log("request.params ==>" , request.params);
+    const name = request.params.name;
+
+    const indice = comunes.findIndex(carta => carta.nombre == name);
+    console.log("indice ==>" , indice); // >=0:found, -1: not found
+    if(indice >= 0){ 
+        comunes[indice] = cartaActualizada;
+        return response.status(200).send(JSON.stringify(comunes));
+    }
+    return response.status(404).send('No se encontro la carta');
+    
+});
+
+
 
 
 
