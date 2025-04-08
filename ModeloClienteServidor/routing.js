@@ -15,6 +15,8 @@ const servidor = http.createServer((request, response) => {
     switch(method){
         case 'GET':
             return manejarSolicitudGET(request, response);
+        case 'POST':
+            return manejarSolicitudPOST(request, response);
         default:
             return console.log(`Método ${method} no soportado`);
             
@@ -53,6 +55,36 @@ function manejarSolicitudGET(request, response){
     // }else{
     //     response.writeHead(404, {'Content-Type': 'text/plain'});
     //     response.end('Ruta no encontrada');
+}
+
+function manejarSolicitudPOST(request, response){
+    const url = request.url;
+    if(url === '/cartas/legendarias'){
+        response.statusCode = 200; // default
+        // console.log('Creando una nueva carta legendaria');
+        let cuerpo = '';
+        //  Se activa cada vez que llega un chunk(contenido) de datos al servidor
+        request.on('data', (contenido) => {
+            cuerpo += contenido.toString();
+        });
+         
+        // Se activa cuando ya no hay más datos por recibir.
+        request.on('end', () => {
+            // console.log(`Creando una nueva carta legendaria ${cuerpo}`);
+            console.log('Cuerpo =>\n');
+            console.log(cuerpo);
+            console.log(typeof cuerpo);
+
+            // convertir a un objeto de js
+            cuerpo = JSON.parse(cuerpo);
+            console.log(typeof cuerpo);
+            console.log(cuerpo);
+            
+            
+            response.end(`Creando una nueva carta legendaria ${cuerpo}`);
+        });
+        return response.end('Se ha solicitado crear una nueva carta legendaria');
+    }
 }
 
 const PORT = 3000;
